@@ -1,7 +1,33 @@
 import React from 'react'
-import { Slot } from 'expo-router'
+import { Tabs } from 'expo-router/tabs'
+import Ionicons from '@expo/vector-icons/Ionicons'
 
-// TEMPORAL: Slot para que arranque; luego se convierte en Tabs
+// headerShown: false → solo se ve el header del Drawer (con el botón de menú)
 export default function TabsLayout() {
-  return <Slot />
+  return (
+    <Tabs screenOptions={{ headerShown: false }}>
+      <Tabs.Screen
+        name="index"
+        options={{
+          title: 'Inicio',
+          // "as string": los tipos de color de Tabs e Ionicons no coinciden
+          tabBarIcon: ({ color, size }) => <Ionicons name="home" color={color as string} size={size} />,
+        }}
+      />
+      <Tabs.Screen
+        name="favoritos"
+        options={{
+          title: 'Favoritos',
+          tabBarIcon: ({ color, size }) => <Ionicons name="heart" color={color as string} size={size} />,
+        }}
+      />
+      <Tabs.Screen
+        name="perfil"
+        options={{
+          title: 'Perfil',
+          tabBarIcon: ({ color, size }) => <Ionicons name="person" color={color as string} size={size} />,
+        }}
+      />
+    </Tabs>
+  )
 }

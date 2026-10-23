@@ -1,7 +1,12 @@
 import React from 'react'
-import { Slot } from 'expo-router'
+import { Drawer } from 'expo-router/drawer'
 
-// TEMPORAL: Slot para que arranque; en B3 este grupo pasa a ser un Drawer
+// drawerLabel: texto en el menú lateral · title: texto en el header
 export default function AppLayout() {
-  return <Slot />
+  return (
+    <Drawer>
+      <Drawer.Screen name="(tabs)" options={{ drawerLabel: 'Inicio', title: 'Inicio' }} />
+      <Drawer.Screen name="ajustes" options={{ drawerLabel: 'Ajustes', title: 'Ajustes' }} />
+    </Drawer>
+  )
 }
